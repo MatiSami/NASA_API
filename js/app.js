@@ -111,6 +111,8 @@ $($nextSlide).on("click", function (e) {
             let nextElementImageNext = $(nextElementNext).css('background-image').replace(/^url\(['"](.+)['"]\)/, '$1');
             $(".big-picture").css('background-image', 'url(' + nextElementImageNext + ')')
             dataOrderNext = dataOrderNext + 1
+            dataOrderPrev = dataOrderNext
+            console.log(dataOrderNext);
         }
     }
 })
@@ -126,12 +128,11 @@ $($prevSlide).on("click", function (e) {
         $(".big-picture").css('background-image', 'url(' + nextElementImage + ')')
         dataOrderPrev = dataOrderCurrent - 1
 
-    } else {
-        if (dataOrderPrev >= 0) {
+    } else if (dataOrderPrev > 0) {
             let nextElementPrev = document.querySelector(`[data-order='${dataOrderPrev}']`);
             let nextElementImagePrev = $(nextElementPrev).css('background-image').replace(/^url\(['"](.+)['"]\)/, '$1');
             $(".big-picture").css('background-image', 'url(' + nextElementImagePrev + ')')
             dataOrderPrev = dataOrderPrev - 1
         }
-    }
+    
 })
